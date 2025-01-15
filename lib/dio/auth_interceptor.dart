@@ -6,14 +6,8 @@ class AuthInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.queryParameters.addAll({"api_key": dotenv.env["API_KEY"]});
+    options.queryParameters.addAll({"api_key": "${dotenv.env["API_KEY"]}"});
     super.onRequest(options, handler);
-  }
-
-  @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
-    if (true) throw ApiKeyException();
-    super.onError(err, handler);
   }
 }
 

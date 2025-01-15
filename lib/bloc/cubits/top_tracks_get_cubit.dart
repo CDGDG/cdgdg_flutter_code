@@ -1,6 +1,6 @@
 import 'package:cdgdg_flutter_code/bloc/bloc.dart';
-import 'package:cdgdg_flutter_code/dio/dio.dart';
 import 'package:cdgdg_flutter_code/repositories/repositories.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TopTracksGetCubit extends Cubit<TopTracksGetState> {
@@ -12,9 +12,8 @@ class TopTracksGetCubit extends Cubit<TopTracksGetState> {
     try {
       final topTracks = await _repository.getTopTracks();
       emit(TopTracksGetState.loaded(topTracks));
-    } on ApiKeyException {
-      emit(const TopTracksGetState.unauthorized());
     } catch (e) {
+      if (e is DioException && e.response?.statusCode == 403) return emit(TopTracksGetState.unauthorized());
       emit(TopTracksGetState.error("Error!"));
     }
   }
