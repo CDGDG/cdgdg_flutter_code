@@ -2,8 +2,8 @@ import 'package:cdgdg_flutter_code/dio/dio.dart';
 import 'package:cdgdg_flutter_code/models/models.dart';
 import 'package:dio/dio.dart';
 
-class MusicRepository {
-  MusicRepository(this._client);
+class TrackRepository {
+  TrackRepository(this._client);
   final Dio _client;
 
   Future<List<Track>> getTopTracks() async {

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TopTracksGetCubit extends Cubit<TopTracksGetState> {
   TopTracksGetCubit(this._repository) : super(const TopTracksGetState.init());
-  final MusicRepository _repository;
+  final TrackRepository _repository;
 
   Future<void> getTopTracks() async {
     emit(const TopTracksGetState.loading());

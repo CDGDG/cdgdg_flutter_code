@@ -9,7 +9,7 @@ class BlocScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TopTracksGetCubit(context.read<MusicRepository>())..getTopTracks(),
+      create: (context) => TopTracksGetCubit(context.read<TrackRepository>())..getTopTracks(),
       child: const _BlocView(),
     );
   }

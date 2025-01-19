@@ -1,6 +1,6 @@
 import 'package:cdgdg_flutter_code/bloc/bloc.dart';
 import 'package:cdgdg_flutter_code/dio/dio.dart';
-import 'package:cdgdg_flutter_code/repositories/music_repository.dart';
+import 'package:cdgdg_flutter_code/repositories/track_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +20,7 @@ class CdgdgFlutterCode extends StatelessWidget {
     return Provider(
       create: (_) => Client.instance,
       child: RepositoryProvider(
-        create: (context) => MusicRepository(context.read<Dio>()),
+        create: (context) => TrackRepository(context.read<Dio>()),
         child: MaterialApp(
           title: 'CDGDG Flutter Code',
           theme: ThemeData(
